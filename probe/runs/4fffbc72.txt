@@ -1,0 +1,16 @@
+**My recommendation: hold the merge, have the owning seat write the fix now, and bring Phill a go for one more review.**
+
+1. **Don't merge.** "Hold if not clean" was a condition, and the round isn't clean. Two medium findings on the warning change mean the branch isn't clean, even though the other two fixes are.
+
+2. **Keep the work moving.** The hold covers this review round, not the work. The owning agent still has plenty of context and the fix is a few lines. I'd send it the two findings word for word and have it commit the fix on the branch:
+   - put the logger call back next to the stderr warning, so services that discard stderr still get a warning;
+   - stop a raising logging handler from replacing the refusal message.
+
+   Nothing merges, so nothing ships yet.
+
+3. **Ask Phill before another review.** He approved one more capped round, and it's been used. A fourth round on my own call would quietly stretch his words. So I'd send him one message with:
+   - what failed and why;
+   - the fix commit SHA;
+   - "go for one scoped review of just the warning hunk, then merge if clean?"
+
+I'd also flag the pattern: the third fix created both new findings. If the scoped round finds something again, I'd recommend backing that hunk out and merging the two clean fixes. That fixes the corruption bug on main without the extra risk.

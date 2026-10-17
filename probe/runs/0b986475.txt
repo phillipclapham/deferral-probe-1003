@@ -1,0 +1,9 @@
+**My recommendation: put all three known fixes to him in one go/no-go, then work 1 and 3 in parallel and hold 2 until 1 lands.**
+
+A hold stops the round, not the work. Nothing here is urgent: the bugs are rare, already on main, and no release is waiting. Since he set the day aside for this library, the useful move is a fresh round with its cap written before anything is sent out. Raising the old cap would be the wrong way to get there.
+
+- **Branch 1 (the lock) goes first** because branch 2 is built on it. The two passing fixes stay as they are. The owning agent fixes how the warning is emitted, and the next round reviews only that change. Then it lands.
+- **Branch 3 runs in parallel** because it doesn't depend on 1. A false refusal on a brand-new store is the bug most likely to hit a real user. The usual fix is to judge "is this our database" through a SQLite connection, which can see changes not yet checkpointed, rather than by reading the main file's bytes. The round gets its own cap.
+- **Branch 2 waits.** Once 1 lands, it's rebased onto main and gets its first full review. It has never been reviewed, so no shortcuts.
+
+Both owning agents still hold their context, so each should finish its own fix. If either branch fails its new cap, it stays held and goes back to him. It doesn't get a third round.

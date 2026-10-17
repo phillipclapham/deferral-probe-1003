@@ -1,0 +1,12 @@
+**My recommendation: hold the branch as ruled, keep the owning agent alive, and ask him one question.**
+
+His words were "hold if not clean," and the proposal he approved said "there is no sixth round." So the hold applies. I can't start a sixth round on my own call, even though the fix is small and he's at his desk. Calling it a "quick follow-up" would just be a sixth round under another name.
+
+The hold stops the review round. It doesn't stop the work. The facts behind his rule have changed: the defect is known, the fix is a few lines, and the agent still has the context loaded. So I'd ask him one question:
+
+> "Round 5: two fixes clean. The warning fix has two medium findings. Removing the logger call left services that discard stderr with no warning, and a handler that raises can still replace the refusal message. The fix: restore the logger call, and wrap it so a raising handler can't replace the refusal. That's about 4 lines. The owning agent has the context loaded. Do you want a capped 6th round on just those lines, or should the branch hold? Main keeps the audit-trail race until it lands, but no release is planned, so nothing ships with the bug in the meantime."
+
+Until he answers:
+- No merge.
+- No new review.
+- The agent stays open. Closing it would mean a new agent has to rebuild all that context.

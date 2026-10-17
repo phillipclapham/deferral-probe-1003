@@ -1,0 +1,11 @@
+**Recommendation: hold the branch and tell him now. Don't apply the fix without his go-ahead.**
+
+His words were "hold if not clean." The proposal he approved said "there is no sixth round." This round isn't clean, so the branch holds. A small, known fix doesn't change that. That's the exact pull the cap was written against: on this repo's history, the fix is where the next defect tends to live. If the owning agent applies it on its own, it reopens the loop he closed and goes beyond what he approved.
+
+The cost is real, though, so he should hear it. The concurrent-write corruption stays live on main while the branch waits. He's at his desk, so send him one short message:
+
+- **Status:** round 5 was not clean. Two of three fixes are clean. The warning-emission change has two medium findings: the stderr-discarding services lose their only warning, and a raising handler can still replace the refusal message.
+- **Known fix:** a few lines for each.
+- **His options:** (a) the hold stands; (b) he explicitly lifts it for one more capped round on just those two findings; (c) delete instead of bound: drop the warning change and land the two clean fixes after a review of only that.
+
+I'd lean toward (c). It's the delete-or-bound move, and it gets the corruption fix moving. But the call is his to make.

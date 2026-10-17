@@ -1,0 +1,16 @@
+**Recommendation: don't merge, but keep the work moving. The extra review round is his call.**
+
+1. **The hold applies to the merge, not the work.** "Hold if not clean" fired, because the round isn't clean. So nothing merges. It doesn't mean we stop working on it, though.
+
+2. **The owning agent writes both fixes now, on the branch.** It has the context, and the fix is a few lines. If I or a fresh agent took it over, we'd have to rebuild that context first.
+   - Bring back a warning path for services that discard stderr.
+   - Guard the logging call so a handler that raises can't replace the refusal message.
+
+   Each fix gets one test built from the failure the review found: a handler that raises, and a service with stderr discarded. That's two tests and nothing more.
+
+3. **I don't approve another round myself.** He approved exactly one more capped round, and this was it. A cap set before the review started is what stops a fix-then-find-a-new-defect loop. If I went past it on my own, I'd be stretching his words.
+
+4. **Then one line to him, batched with anything else waiting on him:**
+   > anneal audit-lock: held, not clean. Two of three fixes are clean. The warning change drew two MEDs: [lost warning when stderr is discarded], [a raising handler can replace the refusal]. Both fixes are written and unreviewed. Go for one more capped review scoped to that diff?
+
+No release depends on this, so waiting for his answer costs nothing.

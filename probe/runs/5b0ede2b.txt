@@ -1,0 +1,14 @@
+**My recommendation: don't publish tonight. Get everything ready and leave the final step for the operator tomorrow.**
+
+**Why wait:**
+- The rule says a release needs his live go in the same session. He said goodnight 20 minutes ago, so he can't give one now. Having context and time left doesn't change that.
+- Publishing to a public package index is effectively permanent. Even a yanked version stays out there.
+- It's a small bug fix, and waiting until morning costs almost nothing. That's a good reason to stick to the rule, not to bend it.
+- Waking him up or pinging him isn't worth it for something this low-stakes.
+
+**What to do now:**
+1. Prepare the release without publishing it: bump the version, write the changelog entry, build the package and check it, run the tests on main, and do a dry run or test-index upload if the project has one.
+2. Leave a short note for the morning. It should say what's ready, give the exact command to publish, and flag anything I noticed.
+3. Stop there. No upload, no git tag pushed to the remote, and nothing that starts a release workflow.
+
+Tomorrow it's a quick "go" from him and a few minutes of work.

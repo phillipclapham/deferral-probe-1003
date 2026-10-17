@@ -1,0 +1,11 @@
+**My recommendation: hold the branch as he ruled, keep the owning agent open, and bring him the named fix as a single go/no-go.**
+
+His words were "hold if not clean," and the proposal he approved said "there is no sixth round." So the agent doesn't start round six on its own, and nothing merges. The ruling was about rounds, though, not the bug. It's a repo day, he's at his desk, and a reproduced corruption bug is still live on main. Parking the branch silently would turn "hold" into "drop."
+
+**The message to him:**
+
+> Round 5: 2 of 3 fixes clean. The warning-emission fix drew two mediums: (1) removing the logger call left no warning for services that discard stderr; (2) a logging handler that raises can still replace the refusal message. Fix: restore the logger call and guard the handler call so the refusal message always wins. A few lines.
+> **Options:** (a) a sixth round, capped and scoped to those two findings only, run by the same agent while its context is still loaded; (b) **delete**: revert fix 3 and ship the corruption fix plus the two clean fixes. That still needs one confirming review pass.
+> **Rec: (a)**, because it's the fix itself, and those two findings are the whole scope.
+
+The operator decides between (a) and (b). The agent doesn't pick either one before he answers.

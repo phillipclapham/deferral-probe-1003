@@ -1,0 +1,13 @@
+**Recommendation: have each owning seat apply its known fix now, in dependency order, with one more capped round each. Don't escalate any of it to Phill.**
+
+1. **Branch 1 (audit lock) goes first.** The two medium findings are only about how the warning is emitted, so the fix is small. Run one capped review. If it's clean, merge it: Phill's ruling (spore-1314) already says "merge if clean".
+2. **Branch 2 (refuse-and-repair) waits for branch 1.** Rebase it onto the merged branch 1, then give it its first review. Reviewing it now would mean reviewing against a base that's about to change.
+3. **Branch 3 (foreign-database check) runs in parallel, since it's independent.** The first step is a run, not a test: create a brand-new store with uncommitted write-ahead changes and point the command at it. Confirm it refuses wrongly, then fix it. The regression test should come from that reproduced failure.
+
+**Why now and not hold:** the seats are live and still have their context, so finishing in the loaded seat costs nothing extra. Waiting means a cold seat pays the ramp-up later.
+
+**Why no rush:** the bugs are rare, already on main, and there's no release to block. Today's pressure is low.
+
+**The cap holds:** if any branch fails its next round, hold it. Bring Phill that finding as a named go/no-go. The fixes on these branches have kept turning up new defects, so another round without a decision would be a spiral.
+
+Nothing here needs Phill until there's a merge result or a second failure.

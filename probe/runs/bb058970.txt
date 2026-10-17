@@ -1,0 +1,7 @@
+**My recommendation: keep all three owners working today, in dependency order, with the review cap written down before any work starts.**
+
+- **Branch 1 (audit lock):** The owner fixes the two medium findings about how the warning is emitted. Then one more review, scoped only to that commit. If it comes back clean, it merges. That's the "merge if clean" you already ruled for this branch, so it isn't a new decision for you.
+- **Branch 2 (refuse-and-repair):** It builds on branch 1, so it waits for branch 1 to merge, then rebases onto main and gets its first review. Reviewing it now would mean reviewing code that sits on a base that's still changing.
+- **Branch 3 (foreign-database check):** It's independent, so it runs in parallel. The owner first reproduces the false refusal on a brand-new store whose recent changes are still in the write-ahead log and not yet in the main file. That reproduction becomes the test. Then the fix, then one capped review.
+
+**Why now, not later:** The owners are live and still have context. Handing off later means a fresh agent has to rebuild that context from scratch. The bugs are rare and already on main, and no release is planned, so nothing forces a rush. That's the reason the cap matters: if any branch fails its round, it stops and comes to you. It doesn't start another round of fixes. On these branches, each fix has tended to introduce the next defect.

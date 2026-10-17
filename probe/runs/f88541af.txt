@@ -1,0 +1,17 @@
+**Hold the branch and tell Phill now.** Don't start a fix round.
+
+**Why:**
+- His words were "hold if not clean." This round isn't clean, and his rule already covers that case.
+- The desk rule says the same thing: a capped final round that comes back not clean stops the rounds.
+- Rounds keep coming back on this same seam (3x so far), which is the "stop and route" pattern.
+- A small fix, an owner with plenty of context and no planned release all make another round tempting, but none of them is his approval. "A few lines" is how earlier fixes on this seam started, and each one brought a new defect.
+
+**What to send him (one message, since he's at his desk):**
+1. Two of the three fixes are clean. The warning-emission change has two medium findings:
+   - Removing the logger call left services that discard stderr with no warning at all.
+   - A logging handler that raises can still replace the refusal message.
+2. Both fixes are known and a few lines each.
+3. **My recommendation: the "delete" half of his own rule.** Undo the warning-emission change so main's logger behaviour comes back, and keep the two clean fixes. That leaves the bug fix on the branch and closes this seam instead of patching it again. A plain undo is also a cheap diff to review.
+4. If he'd rather keep the change, the other option is one more targeted fix-diff round, approved by him and capped before it starts.
+
+Until he answers, nothing merges.

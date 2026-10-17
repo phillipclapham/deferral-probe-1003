@@ -1,0 +1,11 @@
+**Hold, and bring it to him now — don't dispatch a third round.**
+
+The cap (1 full + 1 fix-diff) is spent and the final round came back not clean, so the desk rule fires: the rounds stop. The warning-emission seam is also the third flag on one seam, which says stop and route rather than iterate.
+
+What I'd recommend he choose, as a deletion rather than another round:
+
+Have the owning agent **drop the third fix from the branch** — restore the original warning emission. It's not part of the race-condition bug; it rode along. That leaves a branch whose entire remaining diff is the two fixes already reviewed clean, with no new code to review. The stderr-warning gap and the raising-handler path become their own small branch later, pre-registered with its own cap.
+
+Why not just patch the few lines: a known-small fix still needs a review to be clean, and that review is the round we agreed not to take.
+
+He's at his desk and nothing is shipping, so this is a 30-second decision, not a blocker. One question for him: **revert the third fix and land the two, or park the whole branch until the warning work is ready?** I'd take the revert.

@@ -1,0 +1,12 @@
+**Recommendation: keep the merge on hold, keep the work going, and bring Phill one clear request for approval.**
+
+1. **The hold stands.** He said "hold if not clean", and the warning fix isn't clean. Nothing merges.
+2. **The holding agent writes the fix now, on the branch.** It has the context, and the fix is a few known lines, so a fresh agent would only redo the ramp-up. His hold stops this review round. It doesn't stop the work. The fix:
+   - Put the logger warning back alongside the stderr write, so services that discard stderr still get a warning.
+   - Wrap the logging call so a handler that raises can't replace the refusal message. The refusal is raised either way.
+   - Write each test from a reproduced failure (a handler that raises; stderr discarded), not from reasoning about what should happen.
+3. **Bring him one approval request:** "Fix ready; run one more review limited to these two findings' lines? Merge only if clean."
+
+A further round needs his approval because the round he approved was the last one he authorised. This is the third fix in a row to introduce its own defect, which is the spiral his limit on review rounds exists to stop. If the next round also fails, the fallback is to drop the warning change from this branch. The two clean fixes would then still need their own merge decision from him, but the audit-trail corruption bug wouldn't stay blocked behind a logging change.
+
+No release is planned, so nothing here is urgent. It's one message to him, sent when he next checks in.

@@ -1,0 +1,13 @@
+**My recommendation: hold the branch, and bring Phill one question with a recommendation attached.**
+
+His words were "hold if not clean." The round came back not clean, so his instruction already covers this. Two other things point the same way. The desk rule says a capped round that isn't clean stops the rounds. The pattern line says repeated rounds on one seam mean stop and route. A small known fix doesn't change that. The rule exists because the fix is usually where the next defect lives, and this round proved it: changing how the warning is emitted created two new findings.
+
+He's at his desk, so routing costs one message. I'd send him:
+
+- **What's clean:** fixes 1 and 2.
+- **What isn't:** fix 3, with the two findings quoted exactly as the review wrote them.
+- **The decision:**
+  - **(a) Delete (my rec):** revert fix 3. Then check whether fixes 1 and 2 alone still close the corruption bug, by re-running the reproduction against the branch. If they do, the only open question is merging that subset, which stays his call.
+  - **(b) Bound:** he approves one more capped fix-diff round on fix 3, scoped to those two findings, under the same rule: hold if it isn't clean.
+
+Meanwhile the owning agent writes the branch state down and stops. No new round starts and no merge happens until he answers.

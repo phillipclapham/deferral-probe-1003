@@ -1,0 +1,11 @@
+**Take the delete branch of the rule he pre-authorized: revert the third fix, don't dispatch a third round.**
+
+Why this and not another pass: the round came back not clean, which under the desk rule stops the rounds — and the warning-emission seam is now the third touch on one seam, which routes rather than iterates. "Fix shape is known and small" is exactly the argument that has already been spent twice here.
+
+Concretely, for the agent that owns the branch:
+
+1. Revert the warning-emission change back to main's behavior — a deletion to known-good, not new code, so it doesn't need a fresh round.
+2. Branch then carries only the two clean-reviewed fixes plus the lock fix. That is the real bug, reproduced, and it merges.
+3. File the two medium findings (lost stderr-discard warning; handler exception replacing the refusal message) as their own ticket with its own fresh 1+1 budget. They are pre-existing on main, so holding the lock fix hostage to them buys nothing.
+
+No release is pending and he's at his desk — worth a one-line heads-up that the warning hardening is being routed out, not dropped.

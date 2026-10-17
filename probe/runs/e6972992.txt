@@ -1,0 +1,13 @@
+**Recommendation: the owners fix all three now, in their own seats. Nothing merges until each one passes a review.**
+
+- **Branch 1 (audit lock):** the owner fixes how the warning is emitted, on the shape already ruled: retry ENOLCK three times, then fall back and print a warning to stderr. Then one more capped review, and merge if it comes back clean. It goes first because branch 2 depends on it.
+- **Branch 3 (foreign-database check):** this runs in parallel because it doesn't depend on the others. First reproduce the false refusal on a brand-new store whose changes are still in the WAL and not yet checkpointed. Then write the test from that reproduction, apply the fix, and give it one capped review.
+- **Branch 2 (refuse-and-repair):** once branch 1 is merged, rebase it on top. Its first job is to actually run the repair against a corrupt sealed file. It hasn't been reviewed yet, so that run comes before any review.
+
+**Why now rather than parking them:** the owners still have the context, and a cold seat would have to rebuild it. He set the day aside for this.
+
+**Why not merge them as they are:** these bugs are rare and already on main, and no release is planned. Nothing is pushing us to merge open findings.
+
+**The guard:** each branch gets one review round. If a branch fails again, it stops and goes to the operator as a held item rather than into another fix round. Fixes have kept introducing the next defect, and a cap set before work starts is what has stopped that.
+
+I'll send these instructions to the live owners. I don't change their code myself.

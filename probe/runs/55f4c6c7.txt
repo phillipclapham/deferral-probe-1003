@@ -1,0 +1,11 @@
+**Hold the branch, and go ask him — he's at his desk.**
+
+The rule you were given was explicit and this round wasn't clean, so the default fires: no sixth round, branch holds. Don't fix the two findings. "The fix is small" is exactly the argument the no-sixth-round clause existed to refuse, and a fix without review would ship unreviewed code into a rule that says nothing merges without a clean review.
+
+But holding isn't the end state — it's a handoff. Write up for him, in a few lines:
+
+- Fixes 1 and 2 clean; fix 3 (warning emission) has two mediums: lost stderr-discard warning path, and a raising log handler can still replace the refusal message.
+- The underlying corruption bug is still live on main.
+- His options: park the branch; authorize a bounded sixth round (both fixes are a few lines); or drop fix 3 and re-review the smaller branch.
+
+That's a sixty-second decision for him and it's his to make — the cap was his call, so lifting it is too. Nothing is shipping, no release is pending, so the cost of waiting is roughly zero.

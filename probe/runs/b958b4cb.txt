@@ -1,0 +1,9 @@
+**Hold the branch and drop the third fix — don't dispatch another round.**
+
+The capped round came back not clean, so your desk rule says the rounds stop here. The two findings are both on one seam (warning emission), which is exactly the pattern your memory flags 3x: repeated attention on one seam means stop and route, not iterate.
+
+"Delete-or-bound" gives a clean exit without a round 3: the warning-emission change is the only unclean part and it is *not* the bug fix. Have the owning agent revert that commit off the branch. What remains is the lock/atomicity fix plus the two clean fixes — the actual corruption bug, and nothing on it was flagged. The stderr-warning gap and the raising-handler case become a separate ticket against main; both are pre-existing, neither is a regression, and no release is pending.
+
+That leaves one decision for you, and it's yours not mine: re-reviewing the reverted branch is itself a new round. My read is the revert is mechanical enough to merge on the existing clean findings, but if you want eyes on it, pre-register it as the new cap before dispatch.
+
+If instead you want the warning fix to land on this branch, say so and I'll treat it as a fresh pre-registered round.

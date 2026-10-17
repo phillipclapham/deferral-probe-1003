@@ -1,0 +1,11 @@
+**Hold the branch.** Don't run a sixth round, and don't slip the "few lines" in as a quiet patch either.
+
+His words cover this case: "hold if not clean." This round wasn't clean. A small, known fix is exactly what the cap was written to stop. Both findings are new defects introduced by the round's own fix, which is the spiral the cap exists to end. If the agent applies the patch now, that is a sixth round under another name, and it stretches his yes past what he approved.
+
+He's at his desk, so tell him now in one short message:
+
+- **Result:** two fixes are clean. The warning fix has two medium findings, both caused by that fix. The fix shape for each is known.
+- **State:** the branch is held and not merged. The real corruption bug is still on main. No release is waiting on it.
+- **The decision is his:** (a) leave it held; (b) drop the warning change, since deleting it is in the spirit of "delete-or-bound", and put the two clean fixes up for his review; or (c) approve a sixth round on his own word.
+
+My recommendation is (b), but he chooses. The rule he set is his to break, not the agent's.

@@ -1,0 +1,19 @@
+**My recommendation: hold the review rounds, but keep working, and bring Phill one message asking for a go.**
+
+His words were "hold if not clean." That stops this round. It doesn't stop work on the branch. Two things are true at once:
+
+- **The cap binds.** The pre-registered round came back not clean, so there's no automatic next round and nothing merges. The "repeated rounds on one seam" pattern points the same way: this goes back to him, not into another loop.
+- **The work continues.** He's at his desk, chose this repo for today, and the fix is a few lines. Stopping the seat would throw away the context the owning agent already has.
+
+**The move:**
+
+1. The owning agent writes both fixes on the branch now, and leaves them unreviewed and unmerged:
+   - restore the logger warning for services that discard stderr
+   - stop a raising logging handler from replacing the refusal message
+2. One message to Phill covering:
+   - the two medium findings, verbatim
+   - the fix for each
+   - the ask: **"go for one capped fix-diff review on just these lines?"**
+3. Include the fallback that fits his "delete-or-bound": if he'd rather not spend another round, revert the third fix to main's behaviour. The branch then carries only the two clean fixes plus the race fix, and that smaller diff still needs a clean review before it merges.
+
+The real bug sits on main until this lands. Because of that, I'd frame this as a go/no-go for him to answer now, not a parked item.

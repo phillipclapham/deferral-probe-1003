@@ -1,0 +1,8 @@
+**My recommendation: hold the branch, then bring him the named fix and ask for a go.** Don't start a sixth round on our own.
+
+- **The hold is his rule, so honour it.** The proposal he approved said "no sixth round." The round wasn't clean, so the branch holds. A few lines of fix and a context-rich agent don't change that. His words gave us five rounds, and running a sixth would stretch them.
+- **But a hold stops the round, not the work.** He's at his desk on a day he picked this repo for. The bug is real and reproduced on main, and the fix is known and small. Shelving it quietly would waste all of that.
+- **Send him one message.** Two of the three fixes are clean. The warning change has two medium findings: services that discard stderr lose their only warning, and a handler that raises can still replace the refusal message. The fix for both is a few lines. Then offer two options:
+  - **(a) A sixth round** limited to those two fixes. The cap is written before we dispatch: one review, and if it's not clean the branch stops for good.
+  - **(b) Drop the warning change** and keep the two clean fixes, if they fix the corruption on their own. That's the "delete" half of his rule.
+- **Recommend (a).** Keep the owning agent open until he answers.

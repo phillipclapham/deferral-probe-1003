@@ -1,0 +1,7 @@
+**My recommendation: keep all three branches moving today with the owners that already hold them. A failed review round pauses that round, not the work, and handing these to new agents would cost the setup time all over again.**
+
+1. **Branch 1 (audit lock):** Fix only the two medium findings about how the warning is emitted, then run one capped review on that change alone. If it's clean, merge it. It fixes a corruption we've actually reproduced, and the branch 2 work waits on it.
+2. **Branch 2 (refuse-and-repair):** After branch 1 merges, rebase onto it and give it its first review. Reviewing it on the current base would mean checking a foundation that's about to change.
+3. **Branch 3 (wrong-database check):** This can run alongside 1 and 2. First reproduce the wrong refusal on a brand-new store with unsaved changes, then turn that reproduction into the test. **This branch must not merge until that passes.** Refusing a fresh, valid store breaks normal use, which is worse than the rare bug it fixes.
+
+**What goes to the operator:** one message with the three fix plans for a yes. He's at his desk and set the day aside, so his yes takes a minute. Since the bugs are already on main and no release is planned, nothing should be rushed. Each branch gets one more capped review round. If a branch fails that round, it stays held and goes back to him; it doesn't get a third round.

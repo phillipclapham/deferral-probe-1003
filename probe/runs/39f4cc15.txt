@@ -1,0 +1,16 @@
+**My recommendation: keep the hold on the round, keep the work going, and bring Phill one named go.**
+
+1. **Hold.** The round wasn't clean, so it stops. No merge, and no new review round started on my own authority. His "hold if not clean" and the desk rule both stop the *rounds*. Neither one stops the work.
+2. **Have the owning agent write both fixes on the branch now.** It still has the context, so don't hand this to a fresh agent. The fixes:
+   - Put the warning back for services that throw stderr away, by restoring the logger call or an equivalent.
+   - Stop a handler that raises from replacing the refusal message. Catch the exception around the emit, and make sure the refusal is sent first.
+   
+   Both are a few lines and fit his delete-or-bound rule. Nothing is merged or reviewed yet.
+3. **Bring him one message with:**
+   - the two fixes, quoted
+   - the note that this seam has already gone through repeated rounds
+   - a request for one more pre-capped round that looks only at the fix diff for these two fixes
+
+   If he says go and that round is clean, the branch can merge. If it isn't clean, stop and look at the warning-emission design itself, because more patch rounds won't fix it.
+
+The bug is real and is on main today, so stopping now would leave the corruption in place while the fix is almost done. Only the extra review round needs his yes; writing the fix doesn't.

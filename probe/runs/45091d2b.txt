@@ -1,0 +1,9 @@
+**Recommendation: hold the merge, and ask him now for one more round, capped and scoped to these two findings.**
+
+He said "hold if not clean," and the round came back not clean. His approval covered one capped round, and that round is used up. Another fix-and-review cycle without his word would stretch his "go on" past what he said. Since he's at his desk, the question costs him almost nothing.
+
+Message to send him:
+
+> **Audit-lock branch, HELD.** Two of the three fixes are clean. The warning-emission fix drew two medium findings: (1) removing the logger call left no warning for services that discard stderr; (2) a logging handler that raises can still replace the refusal message. Both fixes are known and a few lines each: keep the logger call alongside the stderr warning, and guard the handler so the refusal message always survives. **My rec: authorize one more round, limited to these two findings, with the same hold-if-not-clean bar.** The corruption bug is real and on main today. No release depends on this.
+
+Meanwhile, the owning seat stays idle with its context intact. It doesn't relaunch, commit or start work on the fix. If he declines, the fallback is to revert the third fix and send the branch back for review. Nothing merges in either case until a review comes back clean.

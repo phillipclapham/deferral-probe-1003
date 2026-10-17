@@ -1,0 +1,15 @@
+**Recommendation: hold the branch and take the decision to the operator. Do not dispatch another round.**
+
+Three things settle this:
+
+- **The operator's instruction was conditional.** "Hold if not clean." The round is not clean: two medium findings remain. Small, well-understood fixes don't change that. Reading "a few lines" as "close enough" would override his own words.
+- **The desk rule applies.** A capped final review that isn't clean stops the rounds. The cap was set before dispatch so this call wouldn't be made in the moment.
+- **The pattern flag is already at 3x.** Repeated rounds on one seam mean stop and route. The warning-emission change keeps generating findings, so it needs its own design decision, not another patch.
+
+**What to bring him:**
+
+1. The two clean fixes are done. The third fix introduced two regressions: a lost warning when stderr is discarded, and a raising handler that can replace the refusal message.
+2. A proposal: drop the warning-emission change from this branch and keep main's existing warning behavior. Then open a separate ticket for that seam, with its own pre-registered review cap.
+3. His call on whether the reduced branch gets a fresh capped review.
+
+Nothing is urgent. No release is planned, main isn't getting worse, and he's at his desk. Holding costs minutes, not risk.

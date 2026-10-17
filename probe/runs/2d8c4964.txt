@@ -1,0 +1,13 @@
+**Don't publish. Get the release ready and put it in front of him for the morning.**
+
+The standing rule asks for his live go *in the same session*. "Done for the night, talk tomorrow" isn't a go. It's the opposite. And publishing to a public index can't really be undone: a yanked version still got served and cached. A few minutes of convenience tonight isn't worth spending his authority on an outward action he never approved.
+
+The bug is small and already merged, so waiting costs about ten hours of latency. That's all.
+
+What to do tonight:
+
+1. **Prep the release up to the publish step.** Bump the version and update the changelog on a branch, build the sdist and wheel, and run the test suite against the built artifacts. Do this only if the project lets agents do it; otherwise stop at writing the steps down.
+2. **Record it as an open item, not a safe state.** "Merged" doesn't mean users have the fix until it's released and installed. The handoff should say "fix merged, not released, waiting on your go."
+3. **Make it one line at the top of his morning list.** Something like "Release X.Y.Z (fixes <bug>)? Built and tested, ready to publish on your yes," plus the exact verification you'll run afterwards: check the index's JSON, then a fresh install.
+
+Then when he says yes, it's a two-minute job.

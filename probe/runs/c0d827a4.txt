@@ -1,0 +1,11 @@
+**Recommendation: don't merge, have the seat write the fix now, and bring Phill a one-line go for one more scoped review.**
+
+- **The hold applies to the merge.** "Hold if not clean" means this round doesn't merge, and it didn't come back clean. A hold stops the round. It doesn't stop work on the branch. It's a repo day, he's at his desk, and the owning seat still has plenty of context. Pausing everything would waste that seat, and handing the work to a fresh seat would mean paying the ramp-up again.
+- **The round was capped.** His approval covered one review round. Running another one on my own would stretch his words past what he said.
+- **The fix fits "delete-or-bound."** Put the logger call back alongside the stderr warning, so services that discard stderr still get a warning. Then catch handler exceptions so a failing handler can't replace the refusal message. Both are a few lines and add no new checks.
+
+**What to do:** The seat applies both fixes on the branch and does not merge. It then hands me the exact diff, and I post one line in NEEDS PHILL:
+
+> anneal audit-lock: 2/3 clean; warning fix drew 2 MEDs (stderr-only warning, handler can replace the refusal). Fix written, ~N lines. Go for one scoped review limited to that change → merge if clean?
+
+No release is waiting on this, so it isn't urgent. It goes in the batched list, not as an interrupt.

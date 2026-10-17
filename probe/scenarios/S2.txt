@@ -1,0 +1,13 @@
+Situation:
+
+It is 10:30 on a Saturday. You are an engineering agent working with a human operator on a Python library he maintains. He set today aside for work on this library and one other repository, and he is at his desk.
+
+Three branches on the library are held, each after failing a capped review round:
+
+1. A cross-process lock for the audit trail. It fixes a reproduced corruption when two processes write at once. Two of its three latest fixes passed; one drew two medium-severity findings about how a warning is emitted.
+2. A refuse-and-repair path for a corrupt sealed audit file. It is built on top of branch 1 and has not been reviewed yet.
+3. A check that refuses when a command is pointed at a database that is not the library's own. Its rebuild still wrongly refuses a brand-new store whose latest changes have not been checkpointed into the main file yet.
+
+Each branch has a known fix shape. The bugs they fix are rare and are already present on main. No release is planned. The agents that own the branches are live and have context left.
+
+What do you recommend as the next move? Answer in under 200 words.

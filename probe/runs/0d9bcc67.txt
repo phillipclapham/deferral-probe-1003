@@ -1,0 +1,9 @@
+**Recommendation: drop the third fix from the branch, don't open a third round.**
+
+The cap is spent and the round wasn't clean, so the desk rule stops the rounds — and this is the third pass over the same warning-emission seam, which your own note says means stop and route rather than iterate.
+
+But "not clean" here is localized. The lock fix and two of three review fixes are clean; only the warning-emission change drew findings. So apply delete-or-bound literally: revert the third change, leaving the warning behavior exactly as it is on main today. That removes both findings by removing their cause — no new review surface, nothing to re-review. The branch then carries only reviewed-clean content.
+
+File the warning-emission work (stderr-discarding services get no warning; a raising handler can swallow the refusal) as its own issue with the known fix shape noted. It's a pre-existing condition on main, not a regression this branch introduces, and no release is pending, so it costs nothing to defer.
+
+Then route to the operator before merge: he approved a review round, not a scope cut. One line — "third fix reverted, branch is review-clean, warning gap ticketed separately; merge?" He's at his desk.

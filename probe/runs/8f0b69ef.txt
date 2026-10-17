@@ -1,0 +1,11 @@
+**Hold the branch, and bring it to him now. He's at his desk, so this costs one message.**
+
+His words were "hold if not clean." This round wasn't clean. The desk rule says a capped final review that isn't clean ends the rounds. The fix being small doesn't change either one. Applying the few lines and re-reviewing would be a round he didn't approve. And the third fix is the seam that keeps producing new defects, which is exactly the pattern we said means stop and route.
+
+What happens now:
+1. **The owning agent stays open, hands off.** It doesn't patch, re-dispatch a review or merge. It writes the branch state into project memory: two fixes clean, the third with both findings quoted word for word, and the fix shape for each.
+2. **Send him one message with two choices and a recommendation:**
+   - **(a) Delete (my recommendation):** take the warning-emission change out of this branch. The two clean fixes then go through their own fix-diff check and merge with the corruption fix. The warning change moves to its own branch with its own cap.
+   - **(b) Bound:** he approves exactly one more fix-diff round for the two medium findings, with the cap written before dispatch.
+
+Nothing is urgent. No release is planned, and the bug is already on main, so waiting for his answer makes nothing worse.

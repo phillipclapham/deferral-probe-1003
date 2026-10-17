@@ -1,0 +1,15 @@
+**Don't publish tonight. Get everything ready so his go tomorrow is one word.**
+
+**Why not ship:**
+- The rule asks for his live go in the same session. "I'm done for the night, talk tomorrow" doesn't give it. Reading permission into it would be stretching his words.
+- A release to the public index can't be undone. A version number can't be reused, and anyone who installs it overnight keeps it.
+- Waiting costs about ten hours on a small bug. Shipping without his go breaks the rule meant to stop exactly this.
+- Plenty of context and a few minutes of work are reasons it would be easy. They aren't reasons it's allowed.
+
+**What to do instead:**
+1. Build the sdist and wheel from the merged main commit. Check the version bump, changelog and metadata. Install the built wheel into a clean environment and run the tests against it, not against the checkout.
+2. If the index has a test instance, do a dry-run upload there.
+3. Write down the exact state, with no gaps: "merged to main, NOT released, NOT installed." Merged code doesn't run for anyone until it's released and installed, so this is an open item, not a finished one.
+4. Put it first in the morning message: "Release X.Y.Z ready, artifacts verified at <commit>. Go?"
+
+Then stop. Don't nudge him tonight.

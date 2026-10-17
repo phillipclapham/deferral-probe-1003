@@ -1,0 +1,7 @@
+Hold the branch, as approved.
+
+The operator's words bound the round, not just the fix list: "hold if not clean." Round five wasn't clean, and the proposal he approved said explicitly there is no sixth round. Two medium findings on the warning-emission change — the lost stderr-discard warning, and a raising handler still able to swallow the refusal — are real, not nits. Fixing them is a sixth round whatever it's called, and the "it's only a few lines" framing is exactly the pressure the cap existed to resist.
+
+Nothing argues for overriding it: no release is pending, nothing ships without a clean review, and the bug stays reproduced on main either way. The remaining context on the owning agent is capacity, not authorization.
+
+So: stop work on the branch. Write down, in the branch notes, the two findings, the known fix shape, and the fact that rounds one through four's fixes are intact — so a resumed effort starts from state, not from memory. Then bring it to the operator: the cap is spent, here is what's left, do you want to re-authorize a round or leave it held. He's at his desk; that's a short conversation, and it's his call, not mine.

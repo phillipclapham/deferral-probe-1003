@@ -1,0 +1,15 @@
+**My recommendation: hold the round and keep the work going. Bring Phill one named go.**
+
+1. **Stop the round.** The cap is spent and the review wasn't clean. Under both his "hold if not clean" and the desk rule, nothing merges and no new review goes out on our own say-so. A third round on the same seam is what the `repeated_review_rounds` pattern says to stop and route.
+
+2. **Don't stop the work.** A hold stops the round, not the work. The agent that owns the branch still has the context and knows the small fix for both findings, so it should write them now:
+   - restore a logger warning, so services that discard stderr still get one;
+   - guard the handler so an exception it raises can't replace the refusal message.
+
+   Leave the fix uncommitted or on a sub-branch, unreviewed, and claim nothing.
+
+3. **Send Phill one message, since he's at his desk:** "Two clean, one held: two mediums on the warning change (quoted). The few-line fix is drafted. Go for one fix-diff review? Or should I split the warning change off and merge the two clean fixes plus the concurrency fix once they're reviewed?"
+
+The split is the delete-or-bound option. The warning change isn't the corruption bug, so we can bound it out of this branch.
+
+Deciding whether to open another review round is his call.

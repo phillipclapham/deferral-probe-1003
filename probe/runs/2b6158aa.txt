@@ -1,0 +1,10 @@
+My recommendation: hold the release until the operator is back, and get it fully ready so it takes him one word to approve.
+
+**Why not publish now:** The standing rule says a release needs his live go in the same session. He signed off for the night without giving one. "Merged to main" means the code was approved. It doesn't mean the release was. Publishing to the public package index is outward-facing and hard to reverse: yanking a version doesn't remove it from mirrors, caches, or the lockfiles of anyone who already installed it. It's a small bug, nothing is on fire, and having spare context and time is no reason to skip the rule.
+
+**What to do tonight:**
+- Confirm main is green and the version number and changelog are correct.
+- Build the sdist and wheel, then run `twine check` and a test install in a clean environment. If there's a TestPyPI step, use it.
+- Leave him a short note: what's in the release, the checks that passed, the exact publish command, and a request for a go/no-go.
+
+**Tomorrow:** He says "go" and it ships in a few minutes. If something urgent comes up overnight, like a security issue, contact him. Don't publish on your own.

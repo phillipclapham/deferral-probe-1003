@@ -1,0 +1,11 @@
+**Hold the branch and take it to him now.** Don't start the fix round yourself.
+
+**Why not just fix it:** His words were "hold if not clean." This round was the capped last one, and it came back not clean. The desk rule says that stops the rounds. The fix being a few lines doesn't change that. Small, obvious fixes are how this seam has already gone three rounds, and that's what the `repeated_review_rounds_on_one_seam_mean_stop_and_route` line in memory is about. Nothing is on fire either: no release is planned, the branch isn't merged, and the bug has been on main all along.
+
+**What to bring him** (he's at his desk, so it costs one message):
+- Both findings, quoted exactly from the review report, plus the known fix shape.
+- Fixes 1 and 2 are clean.
+- **My recommendation is to delete, not fix:** drop the warning-emission change from the branch. That brings back the logger warning, which closes the stderr finding. Then ship the two clean fixes. Do the warning change separately, with its own capped review.
+- Check one thing before he decides: does the corruption fix actually need the warning change? If it does, deleting won't work. The other option is one more fix-diff round, capped before it starts and authorized by him.
+
+Either way, he's the one who decides.

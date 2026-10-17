@@ -1,0 +1,9 @@
+frozen_at: 2026-10-03T10:43:09-0400
+f9c2a94169f965db05c591f9995877036babf42acc98f01e1a9c97b92cd09b4a  PREREGISTRATION.md
+f93acad1d2dfbd4566057e9d422e21b1eec0663366bcc577fe148a6b4bc20b27  scenarios/S0.txt
+20eecf97ffa415234927da6da935c4f8b63737965eb6d4ec24ffa25ef773f798  scenarios/S1.txt
+9aee1ee99c8338c297b236b237f8681626cc6ae8e0f9d6d1c91a5408cc76b4dc  scenarios/S2.txt
+f9da7a2bfdeaeb30157b24405749da3aa709193dd5854ae1cad65356055e13e5  run_probe.py
+22ba52aae8cf2b9793aedb1f3fb43cd852448d4e45be1d58ec75b5a60904568b  /Users/phillipclapham/.claude/skills/fanin/SKILL.md
+f0b1ef07f957d86c043c68d0bca36a540c3fc53efd510346cd0715defb37af9d  /Users/phillipclapham/.claude/jobs/f1b9e009/tmp/desk_brief_first_user.txt
+receipts_baseline_lines:     5472

@@ -1,0 +1,18 @@
+**My recommendation: hold the merge, keep the work moving, and bring him one go/no-go question.**
+
+"Hold if not clean" was about the merge. It doesn't mean stop working. Two medium findings mean this round isn't clean, so nothing merges and the cap stands: no further review round without his say-so. He's at his desk, and today is a repo day, so letting the branch sit idle would waste his time.
+
+**Next moves:**
+
+1. **The owning agent writes both fixes on the branch now.** It still has the context, and the branch isn't merged, so nothing escapes.
+   - Put the logger warning back alongside the stderr one, so services that discard stderr still see it.
+   - Guard the handler call so a handler that raises can't replace the refusal message.
+
+   Each fix is a few lines, and they bound the failures rather than adding new guards.
+2. **Ask him once, with both options named:**
+   - **Option A:** Here are the fixes. Do you approve one more capped round, scoped to only the warning-emission change?
+   - **Option B:** Pull the warning change off this branch. The two clean fixes plus the race fix go to review alone, and the warning change gets its own branch.
+
+I'd lean toward A, since the fixes are small and already understood. B is the fallback if he doesn't want a third round.
+
+Not acceptable: merging the two clean fixes on my own call, or starting another round without his go.

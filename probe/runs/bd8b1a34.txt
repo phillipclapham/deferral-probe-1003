@@ -1,0 +1,17 @@
+**My recommendation: hold the merge, but keep working. Have the owning agent write the two small fixes now, then ask him for a go on one scoped re-review.**
+
+- **What "hold if not clean" covers.** The round wasn't clean, so nothing merges. It stopped that round, not the work. He's at his desk on a day he picked this repo, so stopping the agent and waiting would waste the session.
+- **Fix it now.** The agent that owns the branch has the context. It should:
+  - put back a warning path that doesn't rely on stderr;
+  - make sure a logging handler that raises can't replace the refusal message;
+  - add a test for each.
+  
+  Everything stays on the branch, unmerged.
+- **Why the next round needs his word.** He approved one more round, and it's been used. A new round is a new approval, so it shouldn't start without him.
+- **What to send him, in one message:**
+  - Two of three fixes are clean.
+  - The warning change drew two medium findings. Name them, and say the fix for each is written and tested.
+  - Ask for a go on a capped re-review of just that change.
+  - If the warning change isn't needed to stop the corruption bug, give him the "delete" option too: drop it from this branch and land the two clean fixes on their own.
+
+The bug is on main today, so the cost of waiting is real. But there's no release planned, so there's no reason to rush past the review.

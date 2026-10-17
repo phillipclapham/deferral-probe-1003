@@ -1,0 +1,16 @@
+**My recommendation: hold the branch, and bring the decision to you before any further rounds.**
+
+Your instruction covered this: "hold if not clean." The capped round came back not clean, so the branch stops where it is. Two things in memory point the same way:
+- **The desk rule:** a capped final review that isn't clean ends both the release and the rounds.
+- **The seam pattern:** repeated review rounds on one seam have already been flagged 3 times today, and the instruction is to stop and route.
+
+The fixes being small and the owning agent having room doesn't change that. "Just a few lines" is how review rounds pile up. There's also no time pressure: no release is planned, and main has had this bug all along.
+
+**What to bring you (you're at your desk):**
+1. Status: 2 of 3 fixes are clean. The warning-emission fix drew two medium findings: there's no warning left for services that discard stderr, and a logging handler that raises can replace the refusal message.
+2. The known fix shape for both findings.
+3. Options: (a) approve a new round, set up and capped in advance, for just that fix; (b) take the warning change out of this branch so it holds only the concurrency fix, then review that; (c) park it. I lean toward (b) if the concurrency fix works without the warning change.
+
+The call is yours.
+
+Separately, the claude.ai Google Drive connector needs authorization in your claude.ai connector settings. Until then it's unavailable.

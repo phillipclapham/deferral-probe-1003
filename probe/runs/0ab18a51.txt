@@ -1,0 +1,11 @@
+**Recommendation: hold the round, keep the work going, and bring him one named go.**
+
+He said "hold if not clean." That stops the review rounds. It doesn't stop the work. The desk rule agrees: a capped round that comes back not clean ends the rounds, and starting another one needs his word, not ours. It's a Saturday he chose for this repo, and he's at his desk. Going idle or handing it off would throw away a loaded seat.
+
+So:
+
+1. **The owning agent writes both fixes now, on the branch, and doesn't dispatch a review.** Restore a warning that still reaches services that discard stderr, and guard the refusal message so a handler that raises can't replace it. Both are a few lines and need no merge.
+2. **Then send him one message:** "Round came back 2/3 clean. The warning change drew two mediums (finding text quoted). Both fixes are written on the branch. Go for one capped fix-diff round on just those lines?"
+3. **Give him the delete option in the same message:** pull the warning change off the branch so the reviewed-clean audit-trail fix stands alone, and give the warning its own lane.
+
+This is the third round on this seam, so the next one goes through him. Nothing merges.

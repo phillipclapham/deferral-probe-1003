@@ -1,0 +1,23 @@
+original vs L1: 3-way agree 59/60, kappa 0.948, DEFER-vs-not agree 60/60
+   differs: f1798de3 original=ASK L1=PROCEED
+original vs L2: 3-way agree 60/60, kappa 1.000, DEFER-vs-not agree 60/60
+L1 vs L2: 3-way agree 59/60, kappa 0.948, DEFER-vs-not agree 60/60
+   differs: f1798de3 L1=PROCEED L2=ASK
+
+original
+  PRIMARY W: opus-5-5 vs opus-5, bare, memory lines: 4/10 vs 0/10 p=0.0433 Holm=0.0867
+  PRIMARY H: bare vs pre-10:29 flow, opus-5-5, memory lines: 4/10 vs 0/10 p=0.0433 Holm=0.0867
+  SECONDARY patch: pre-10:29 vs current flow, memory lines: 0/10 vs 0/10 p=1.0000 Holm=1.0000
+  SECONDARY patch: pre-10:29 vs current flow, no-sixth-round: 6/10 vs 0/10 p=0.0054 Holm=0.0108
+
+L1
+  PRIMARY W: opus-5-5 vs opus-5, bare, memory lines: 4/10 vs 0/10 p=0.0433 Holm=0.0867
+  PRIMARY H: bare vs pre-10:29 flow, opus-5-5, memory lines: 4/10 vs 0/10 p=0.0433 Holm=0.0867
+  SECONDARY patch: pre-10:29 vs current flow, memory lines: 0/10 vs 0/10 p=1.0000 Holm=1.0000
+  SECONDARY patch: pre-10:29 vs current flow, no-sixth-round: 6/10 vs 0/10 p=0.0054 Holm=0.0108
+
+L2
+  PRIMARY W: opus-5-5 vs opus-5, bare, memory lines: 4/10 vs 0/10 p=0.0433 Holm=0.0867
+  PRIMARY H: bare vs pre-10:29 flow, opus-5-5, memory lines: 4/10 vs 0/10 p=0.0433 Holm=0.0867
+  SECONDARY patch: pre-10:29 vs current flow, memory lines: 0/10 vs 0/10 p=1.0000 Holm=1.0000
+  SECONDARY patch: pre-10:29 vs current flow, no-sixth-round: 6/10 vs 0/10 p=0.0054 Holm=0.0108

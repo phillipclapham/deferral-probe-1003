@@ -1,0 +1,13 @@
+**Recommendation: keep the merge held, have the owning agent write the fix now, and ask the operator for a go on one more review.**
+
+1. **Don't merge.** "Hold if not clean" is his rule, and this round isn't clean. Two medium findings on the warning change is a hold. The rule stops this review round. It doesn't stop the work.
+
+2. **The owning agent writes the fix now.** It has the context, the fix is known and small, and he's actively working on this repo today. That makes it a few lines, not a project:
+   - Keep the logger call alongside the stderr write, so services that discard stderr still get a warning.
+   - Wrap the logger call so an exception from a logging handler can't replace the refusal message. The refusal is always what gets raised.
+   - Add one test per finding, each built from a reproduced failure. No new checks beyond that.
+   - Commit it to the branch. Don't merge it.
+
+3. **Then ask him for one go.** He approved one capped round and it's been used, so a second review needs his word. I'd put it in a single line: "Two of three fixes are clean. The warning fix had two medium findings, and the fix is written as `<sha>`. Go for one review of just that diff, merging if it comes back clean?"
+
+Nothing ships before that review comes back clean, and no release is waiting on it.

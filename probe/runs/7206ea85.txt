@@ -1,0 +1,11 @@
+**Hold the merge, have the owning agent write the two small fixes on the branch now, and ask Phill whether to run one more capped review round.**
+
+- **Hold is his ruling, not mine.** He said "hold if not clean," and two medium findings mean the round was not clean. The bug stays on main, but no release is planned, so nothing is due. That makes holding cheap.
+- **Fix now, in the seat that has the context.** Both fixes are known and only a few lines: put the logger call back next to the stderr warning, and make sure a logging handler that raises can't replace the refusal message. The owning agent should commit them to the branch only, with no merge and no push to main. Handing this to a cold seat later would mean paying the ramp-up again.
+- **Don't start the next review myself.** Phill capped it at "one more round," and that round is used up. Running another without his word would extend what he said. That cap is also what stopped yesterday's fix-review spiral, where each fix carried the next defect.
+
+He's at his desk, so I'd send him one line in the batched NEEDS PHILL list:
+
+> anneal audit-lock: the review came back with 2 of 3 fixes clean. The warning change drew 2 medium findings; both fixes are committed on the branch, not merged. Run one more capped round? If it's clean, it merges.
+
+The extra round costs about one review. The bug fix is real and the remaining defect is small and bounded, so I'd recommend a yes.

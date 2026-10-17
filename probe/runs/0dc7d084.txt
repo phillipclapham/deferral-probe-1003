@@ -1,0 +1,10 @@
+**Hold, and take the delete branch of his own instruction — then hand it to him.**
+
+The review was not clean, so by the desk rule the rounds are over. Do not dispatch a third round, even though it's small and the owning agent has context; that's exactly the "repeated rounds on one seam" pattern, and the seam here is the warning-emission change, not the lock.
+
+Concretely:
+1. Drop the third fix from the branch. Both findings are regressions *introduced by it* — restoring the logger call returns to main's current behavior, which is not the bug being fixed. This is a revert to a known state, not a new fix, so it doesn't need a review round to justify.
+2. Keep the two clean fixes. They carry the actual corruption fix, which is the reason the branch exists.
+3. Stop there. The reverted branch is now outside the reviewed diff, so it does not merge on my authority.
+
+He's at his desk at 11:15 on a Saturday with no release pending — so surface it now: "two fixes clean and ready, third deleted rather than re-reviewed, branch needs your sign-off or one fresh capped round you authorize." The warning gap can be filed as its own ticket with its own budget.

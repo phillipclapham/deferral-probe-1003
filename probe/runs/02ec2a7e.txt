@@ -1,0 +1,13 @@
+**Hold the branch.** That's what he already decided. "Hold if not clean" was a conditional ruling, and its condition has now fired: two medium findings mean the round isn't clean. The proposal he approved also said there is no sixth round. Running "just a few lines" of fixes plus another review would be that sixth round under a different name.
+
+A small, known fix doesn't change this. Every earlier round probably looked like a small fix too, and the defects kept turning up inside the fixes. The cap was set before the round started so that nobody would have to make this call in the moment.
+
+What I'd do now:
+
+1. **Write it down where the next session will look:** the two findings quoted exactly, the known fix for each, which two fixes were clean, and the branch head. Then someone can pick it up cold.
+2. **Keep the owning agent open, but have it make no changes.** Its context is worth keeping in case he reopens the branch.
+3. **Send him one message, since he's at his desk.** Round 5 wasn't clean, so the branch is held as he said. Then lay out the two ways to reopen it if he wants to:
+   - (a) drop the warning-emission change if the corruption fix doesn't depend on it, which removes the problem instead of fixing it;
+   - (b) approve a sixth round himself.
+
+Nothing is waiting on this: there's no planned release and nothing merges. Reopening is his decision. My job is to give him the facts, not to argue for it.

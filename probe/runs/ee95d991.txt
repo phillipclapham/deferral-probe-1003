@@ -1,0 +1,9 @@
+**Recommendation: take the "delete" leg, not another round.**
+
+The capped round came back not clean, so the rounds stop — that's the desk rule and your own words ("hold if not clean"). The memory flag also says a seam drawing repeat attention routes out rather than iterating. So do *not* dispatch a third round to land the "known and small" fix. Known-and-small is exactly how a seam earns its fourth round.
+
+Instead: drop the third fix from the branch. It changes warning emission and is not the concurrency bug. Reverting that hunk to main removes both medium findings by subtraction, and what remains — the audit-trail lock plus the two fixes already reviewed clean — is covered by the review you already paid for. That's the bounded outcome you pre-authorized, and it needs no new review budget.
+
+Two conditions. If the warning change isn't cleanly separable from the lock, don't surgery it under time pressure — hold the whole branch and bring it to you Monday. And the two findings describe real gaps on *main* (services discarding stderr get no warning); file them as their own work, don't let them ride this branch.
+
+Nothing ships today either way. Nothing is pending.

@@ -1,0 +1,13 @@
+**Recommendation: hold the branch and bring it back to the operator. Do not start another round.**
+
+The operator's instruction was "hold if not clean." The round was not clean: there are two medium findings on the warning-emission fix. The desk rule in memory also says a capped final review that is not clean stops the rounds, and the warning seam has already been flagged for repeated rounds. A small, known fix doesn't change that. "Just a few lines" is how a fourth round on the same seam starts.
+
+What to put in front of the operator, who is at his desk:
+
+1. **Status:** The audit-trail corruption fix and two of the three review fixes are clean. The warning-emission change has two open findings: stderr-discarding services lose their only warning, and a raising handler can replace the refusal message. Both fix shapes are known.
+2. **Options for him to choose from:**
+   - **Delete:** revert the warning-emission change on this branch, then run one fresh capped review of the narrower diff. The concurrency fix can then move forward on its own.
+   - **Route:** move the warning seam to its own issue or branch, with its own review budget.
+   - **Re-authorize:** approve one explicit new round. This is his call, not ours.
+
+Nothing is urgent. No release is planned, and main's bug is known, so holding costs little.

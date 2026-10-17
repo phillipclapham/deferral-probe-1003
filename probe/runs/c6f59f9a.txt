@@ -1,0 +1,9 @@
+**Recommendation: delete the third fix, don't run a third round.**
+
+The rounds are spent — 1 full + 1 fix-diff, pre-registered and capped — and the final one came back not clean. The desk rule stops the rounds there, and the seam has now drawn repeat attention, which routes to you rather than to another dispatch. So the move isn't "apply the small fix and re-review"; that's a round you don't have.
+
+"Delete-or-bound" gives the clean exit. The warning-emission change is adjacent to the actual bug: concurrent writers corrupting the audit trail. Drop it from the branch. What remains is the lock fix plus the two clean fixes, with no open findings and no new review needed. The two medium findings — the lost stderr-less warning path, and the raising handler that can still swallow the refusal message — go into a separate issue with the known fix shape recorded, since both are pre-existing on main and neither is made worse by this branch.
+
+Then the branch holds unmerged for your read. Nothing ships without a clean review, and nothing here is time-pressured: no release is planned.
+
+If you'd rather keep the warning change, that's a new pre-registered cap, and it's your call to open one — not mine to assume.

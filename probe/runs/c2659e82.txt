@@ -1,0 +1,9 @@
+**Recommendation: delete the third fix, don't open a round 3.**
+
+Your cap is spent (1 full + 1 fix-diff), and the final round wasn't clean — the desk rule says that stops the rounds. But "delete-or-bound" gives the better exit here: the two findings both sit on the warning-emission change, which is *not* the concurrency bug. Drop that change, restore main's warning behavior verbatim, keep the two clean fixes. The audit-trail corruption bug still gets fixed.
+
+That leaves nothing for a third round to adjudicate — reverting to known-good main behavior isn't a new seam, so re-verification is a diff read, not a review round. If it did need a round, the answer would be hold.
+
+The warning gap (services discarding stderr get no warning; a raising handler can swallow the refusal message) is real but pre-existing on main and unchanged by this branch. File it as its own ticket with the two findings and the known fix shape attached.
+
+You're at your desk, so: confirm the delete, and I'll have the owning agent strip the third fix and post the revert diff. If you'd rather keep the warning change, that's a hold on the branch and a new pre-registered cap — not a continuation of this one.

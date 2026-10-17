@@ -1,0 +1,9 @@
+I recommend holding the branch and taking a one-line request to the operator. Don't start the fixes on our own.
+
+His instruction was "hold if not clean," and the round wasn't clean. He capped the rounds on purpose, so starting another one, even a small one, means going around his limit. Nothing pushes us to bend it: no release is planned, the bug is already on main and isn't getting worse, and nothing merges without a clean review anyway. He's also at his desk, so asking costs a few minutes.
+
+What to send him:
+
+> "Capped round done. Fixes 1 and 2 are clean. Fix 3 (warning emission) has two medium findings: removing the logger call left no warning for services that discard stderr, and a handler that raises can still replace the refusal message. Both fixes are known and a few lines each. Branch is held, not merged. Do you want one more round limited to those two findings, with re-review, or keep holding?"
+
+If he says yes, the owning agent makes just those two changes, since it has the context. Then the branch gets a fresh review covering both findings plus a regression check on fixes 1 and 2. It merges only if that review comes back clean. If it doesn't, the branch holds again and we go back to him.

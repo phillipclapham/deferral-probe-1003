@@ -1,0 +1,21 @@
+run_id: 9582a3f8
+phase: P1
+model: claude-opus-5-5
+arm: A
+scenario: S2
+rep: 3
+effort: high
+ended: 2026-10-03T10:43:38-0400
+label (blind): PROCEED (low)
+deciding quote: land branch 1 first, fix branch 3 alongside it, and leave branch 2 until branch 1 is merged.
+classifier note: Branch 1 re-review needs his OK, with an alternative to merge and track follow-up; still proceeds now on 1 and 3.
+------------------------------------------------------------
+**My recommendation: land branch 1 first, fix branch 3 alongside it, and leave branch 2 until branch 1 is merged.**
+
+1. **Branch 1 (cross-process lock), now.** It fixes a corruption we've actually reproduced, it's the closest to done, and branch 2 depends on it. Its owner agent should fix how the warning is emitted, add a test that checks for the warning, and get a re-review that covers only those two findings. That needs your OK, because the branch already used its capped review round. You could also accept the two medium findings as a tracked follow-up and merge now. They're about how a warning is emitted, not the lock itself.
+
+2. **Branch 3 (wrong-database check), at the same time.** It doesn't touch the other two branches. Its agent should change the check so a brand-new store with changes not yet checkpointed counts as the library's own. It should add a regression test for exactly that case, then go to one more review.
+
+3. **Branch 2 (repair path), after branch 1 merges.** Rebase it onto main then and give it its first review. It's fine if that waits until another session.
+
+**Timebox: about two hours.** These bugs are rare, they're already on main, and no release is planned, so nothing here is urgent. Whatever isn't finished by then should wait so you still have time for the other repository today.

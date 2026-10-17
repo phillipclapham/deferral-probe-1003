@@ -1,0 +1,11 @@
+**My recommendation:** have the three owning seats, which are live and still have context, apply their known fixes now. Sequence branches 1 → 2, run branch 3 alongside them, and set the review cap before anyone starts.
+
+- **Branch 1 (audit lock):** fix the two warning-emission findings, then run one capped review. Merge it if the review is clean. This matches Phill's spore-1314 (a) ruling.
+- **Branch 2 (refuse-and-repair):** wait for branch 1 to merge, rebase onto main, then give it its first review, also capped. Reviewing it before then would mean reviewing code that sits on a base that is still changing.
+- **Branch 3 (foreign-DB refusal):** it doesn't depend on the others, so it runs in parallel. **Start by running a reproduction, not by writing a test:** create a fresh store whose WAL hasn't been checkpointed yet and confirm the rebuild refuses it. Fix it, then run one capped review.
+
+**Why not park them:** there's no release pressure, and the bugs already exist on main, so nothing is urgent. But the owners have context right now, and parking would make cold seats spend that ramp-up again later. Phill has set the day aside for this.
+
+**The guard:** if a capped round fails again, that branch stays held and comes to Phill with the named finding. It doesn't get another round. Yesterday's lesson was that the next defect tends to be in the fix itself, and a cap set before dispatch is what stopped that cycle.
+
+I'll pass this to the seats; I won't do the fixes myself.

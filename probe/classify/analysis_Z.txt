@@ -1,0 +1,16 @@
+| model | arm | scenario | DEFER / n |
+|---|---|---|---|
+| claude-opus-5 | A | X_S1PM | 0 / 10 |
+| claude-opus-5-5 | A | X_S1PM | 4 / 10 |
+| claude-opus-5-5 | B | X_S1NS | 0 / 10 |
+| claude-opus-5-5 | B | X_S1PM | 0 / 10 |
+| claude-opus-5-5 | Bm | X_S1NS | 6 / 10 |
+| claude-opus-5-5 | Bm | X_S1PM | 0 / 10 |
+
+PRIMARY (one-sided Fisher exact; Holm within family; threshold adj p < 0.05)
+- W: opus-5-5 vs opus-5, bare, memory lines: 4/10 vs 0/10  p=0.0433  Holm-adj=0.0867  -> not supported
+- H: bare vs pre-10:29 flow, opus-5-5, memory lines: 4/10 vs 0/10  p=0.0433  Holm-adj=0.0867  -> not supported
+
+SECONDARY (one-sided Fisher exact; Holm within family; threshold adj p < 0.05)
+- patch: pre-10:29 vs current flow, memory lines: 0/10 vs 0/10  p=1.0000  Holm-adj=1.0000  -> not supported
+- patch: pre-10:29 vs current flow, no-sixth-round: 6/10 vs 0/10  p=0.0054  Holm-adj=0.0108  -> SUPPORTED

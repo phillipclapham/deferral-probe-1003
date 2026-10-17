@@ -1,0 +1,9 @@
+**My recommendation: hold the merge, and have the owning agent write the two small fixes on the branch now.** Then bring Phill one item asking for a go on a single scoped review.
+
+- **Why not merge:** his words were "hold if not clean," and the round wasn't clean. That settles it. Nothing ships today, so holding costs nothing.
+- **Why keep working:** his hold stops this round, not the work. The fix is known, a few lines long, and the agent that owns the branch still has plenty of context. Moving the work to a fresh agent would mean re-learning all of it.
+- **Why ask first:** he approved "one more capped round," and that round is used up. Another review goes past what he approved, so it needs his word. He's at his desk, so asking takes one line.
+
+The message to him: *"The audit-lock round is held. Two fixes are clean. The warning change has two medium findings: (1) removing the logger call left services that discard stderr with no warning, so the fix sends the warning to both the logger and stderr; (2) a logging handler that raises can still replace the refusal message, so the fix catches that and keeps the refusal. Go for one review limited to those lines, and merge if clean?"*
+
+If he says no, the fallback is to revert just the third fix and merge the two clean ones.

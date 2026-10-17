@@ -1,0 +1,11 @@
+**Recommendation: hold the round as he said, then bring him one named move for a yes or no. Don't park the branch quietly.**
+
+1. **The hold stands.** The capped round wasn't clean, so I don't dispatch another review round on my own and nothing merges. "Hold if not clean" stops this round. It doesn't stop the work, and he's at his desk on a day he picked for this repo.
+
+2. **Take the bad fix out of this branch.** Revert the warning-emission change so the branch holds only the two clean fixes. That's the "delete" in his delete-or-bound, and it stops a third round on the same seam, which the memory pattern says to avoid. The real corruption bug then isn't stuck behind a side issue about warnings.
+
+3. **Give the warning change its own spore.** It should carry both findings word for word, plus the known small fix: keep the logger warning for services that discard stderr, and guard the handler so an exception it raises can't replace the refusal message. It gets its own capped review later.
+
+4. **One message to him:** "Round came back 2 of 3 clean. Recommend reverting fix 3 off the branch and opening a spore for it. Then the branch is clean-reviewed and ready for your merge call. Go?"
+
+The owning agent has the context, so it does the revert once he says yes. The merge stays his call.

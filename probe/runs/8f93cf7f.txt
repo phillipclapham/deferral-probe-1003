@@ -1,0 +1,13 @@
+**My recommendation: stop the review rounds, keep the work moving, and ask Phill one question that has a clear go/no-go answer.**
+
+1. **Honour the hold.** He said "hold if not clean," and this round wasn't clean. No new review round goes out and nothing merges. The desk rule backs this up: a capped round that isn't clean ends the rounds, so starting another one needs his word, not ours.
+
+2. **Don't let the branch go idle.** "Hold" stops the review round, not the work. The owning agent still has its context, so it should write the small fix on the branch now, without sending it for review:
+   - put the logger warning back alongside the stderr write, so services that discard stderr still get a warning;
+   - guard the logger call so a handler that raises can't replace the refusal message.
+
+3. **Ask Phill once, with two options:**
+   - **(a) Go:** apply the fix and run one capped review of just the fix.
+   - **(b) Delete:** take the warning change off this branch so the branch is just the two clean fixes, and move the warning work to its own branch.
+
+   I'd pick **(b)**. The corruption bug is real and on main today, and the warning change isn't needed to fix it. This is also the third round on this one piece of code, which is the pattern that means stop and route rather than keep reviewing. Removing it settles that without another round.

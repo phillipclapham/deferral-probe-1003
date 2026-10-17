@@ -1,0 +1,12 @@
+**My recommendation: have the owning agents finish all three today, while their context is loaded. Branch 2 waits on branch 1.**
+
+- **Branch 1 (audit lock):** fix the two medium findings about how the warning is emitted. That should be small, since the other two fixes already passed. Run one capped review round, then merge if it's clean. It fixes a corruption we've actually reproduced, so it goes first.
+- **Branch 2 (refuse-and-repair):** once branch 1's fix is in, rebase onto it and run its first review. Reviewing it now would mean reviewing it against a base that's about to change.
+- **Branch 3 (foreign-database check):** reproduce the failure first: create a fresh store, leave its latest changes un-checkpointed, and watch the check wrongly refuse it. Turn that reproduction into the test, then apply the fix and run one review round. Don't write a test from what we think the bug is before anyone has run it.
+
+**Guardrails:**
+- **One more review round per branch.** If a branch fails again, it comes back to you as a design question. We don't start another round of fixing that review's findings. This is the same "each fix brings the next defect" pattern we hit three times yesterday.
+- **No rush to merge.** These bugs are rare, already on main, and there's no release planned. So nothing merges without a clean review.
+- **Merges are your call.** Agents push their own branches; they don't merge.
+
+Branches 1 and 3 can run in parallel now. Want me to send this to the three agents?

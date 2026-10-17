@@ -1,0 +1,7 @@
+**My recommendation:** have the live agents apply the known fixes, give each branch one more review round with its cap written down before dispatch, and run branches 1 and 3 in parallel. Branch 2 waits for branch 1.
+
+- **Branch 1 (lock):** it's the closest to done. Two of its three fixes passed, and the open findings are medium-severity and only about how a warning is emitted. Fix that, run one capped round, and if it comes back clean, ask the operator to merge it.
+- **Branch 3 (foreign-database check):** fix it in parallel, since it doesn't depend on the others. Add a regression test for exactly the failing case: a brand-new store whose changes haven't been checkpointed into the main file yet. That false refusal would hit every new user, so it's the bug most worth getting right. Then one capped round.
+- **Branch 2 (repair path):** don't review it yet. It sits on branch 1, so reviewing it now means reviewing against a base that's still changing. Rebase it once branch 1 lands, then give it its own first round.
+
+**Rules for the day:** the operator owns all merges. If a branch fails its round, park it and bring it to him rather than adding another round. These bugs are rare, already on main, and no release is waiting, so nothing justifies an open-ended fix-review loop. That's how a fix ends up holding the next defect. He's at his desk, so pass this plan to him first and let him say go. He also set time aside for the other repo, and this plan shouldn't eat into it.

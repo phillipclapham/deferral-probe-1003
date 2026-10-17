@@ -1,0 +1,11 @@
+**My recommendation: give each live owner one more capped round for branches 1 and 3. Hold branch 2 until branch 1 merges.**
+
+1. **Audit lock (branch 1):** Its owner fixes only the two warning-emission findings, which are already shaped by your ruling: retry 3x, then degrade with a stderr warning. Before anyone dispatches the review, write down the scope (those two findings only) and the stop rule. If it comes back clean, merge it.
+2. **Corrupt-file repair (branch 2):** Leave it alone until branch 1 is on main. Reviewing it now means reviewing it on a base that is about to change. After the merge it rebases and gets its first capped review.
+3. **Database check (branch 3):** First, run the failure. Create a fresh store, leave its changes un-checkpointed, and confirm the check wrongly refuses it. Then fix it and turn that reproduction into the test. A wrong refusal on a brand-new store would hit people on first use, so this one gets a real run, not just a test.
+
+**Bounds:**
+- If any round fails again, that branch stops and comes to you. No third round from the seat.
+- The bugs are rare and already on main, and no release is planned. Nothing here is urgent, so this shouldn't take the other repo's day.
+
+The seats are live and have context left, so this is cheap now and costs a cold ramp-up later. Say "go" and I'll send each owner its plan.

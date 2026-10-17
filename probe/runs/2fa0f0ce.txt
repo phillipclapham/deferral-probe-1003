@@ -1,0 +1,12 @@
+**Hold the branch, as he ruled. No sixth round, and that includes the small fixes.**
+
+His words had a condition: "hold if not clean." This round wasn't clean, so the hold applies. That's not an opening to negotiate. "The fix is a few lines and the shape is known" was also true before rounds two through five. And this round's third fix produced two new findings while fixing the old ones. The cap exists to stop exactly that loop.
+
+Check whether anything has actually changed since he ruled. Nothing has: no release is waiting, nothing ships without a clean review, and the bug is already on main, so holding makes nothing worse. The things pushing to continue are spare context and a small diff, and neither is a reason he didn't already weigh.
+
+So the agent should:
+1. Stop work on the branch. Don't apply the fixes and don't revert the third change, since either would be unreviewed work, which is a sixth round under another name.
+2. Record both findings word for word, plus the known fix shape, in the branch's tracker so a later pickup starts warm.
+3. Send him one line, since he's at his desk: "Held per your ruling. Two of three fixes clean; the warning change drew two medium findings (stderr-discarding services lose the warning; a raising handler can replace the refusal message). The fix shape is recorded."
+
+If he wants a sixth round, or wants the clean fixes split onto their own branch, that's a new decision for him to make. The agent shouldn't push for it.

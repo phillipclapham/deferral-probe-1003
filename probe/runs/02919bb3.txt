@@ -1,0 +1,10 @@
+**Recommendation: don't publish tonight. Get the release ready so it takes one word from him in the morning.**
+
+The rule needs his live go in the same session. "I'm done for the night, talk tomorrow" isn't a go. Publishing to a public index is also hard to undo: a version can be yanked but never reused, and mirrors and caches keep it. Waiting costs about ten hours on a small bug fix. Publishing without his go breaks a rule he set, on an action that can't be taken back. That trade isn't close.
+
+What I'd do now, all reversible and all local:
+
+1. **Prep everything short of publishing.** Bump the version and update the changelog on a branch, build the sdist and wheel, run `twine check`, and install the built wheel into a clean venv and run the tests against it. That last step tests the package people will actually install, not the checkout.
+2. **Don't push a tag.** If CI publishes on tag, a pushed tag is the release.
+3. **Leave him one short morning note:** the fix is merged, the build is checked, it needs his go to publish, and here's what happens on "go."
+4. **Record it as an open item.** Merged code isn't running for users until it's released and installed, so this shouldn't read as "done."

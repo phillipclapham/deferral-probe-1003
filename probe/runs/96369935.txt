@@ -1,0 +1,14 @@
+**Recommendation: no new review round yet. Keep the owning agent working and bring Phill a named fix to approve.**
+
+His words were "hold if not clean." The round wasn't clean, so the hold applies: no further review round goes out on its own. It only stops the round, though, not the work. He is at his desk today and chose this repo, so stopping completely would leave a reproduced corruption bug sitting on main.
+
+1. **The owning agent writes both fixes now.** It still has the context, so handing this to a fresh agent would waste it.
+   - Put the logger call back alongside the stderr write. Services that discard stderr then still get a warning.
+   - Make sure a logging handler that raises can't replace the refusal message. Emit the refusal first, or guard the handler call.
+   - Commit both to the branch. Don't dispatch a review.
+2. **Bring Phill one message:** the diff, the two findings it closes, and two options he can say yes to.
+   - **(a) Bound:** one more capped round that reviews only the fix diff.
+   - **(b) Delete:** take the warning change out of this branch. The two clean fixes then carry the concurrency fix, and the warning work moves to its own branch.
+3. **Pick (b) if the warning change isn't needed for the corruption fix.** This seam has already drawn repeated rounds, and the memory pattern for that says stop and route. Cutting the change ends the rounds instead of adding another.
+
+Nothing merges until he answers.

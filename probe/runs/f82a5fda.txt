@@ -1,0 +1,18 @@
+**My recommendation: hold the branch and bring the result to him. The agent shouldn't fix the findings on its own.**
+
+He set the condition himself: "hold if not clean." This round wasn't clean. The fixes are small, but that doesn't change anything. "Just a few lines" is the exact thinking the cap was there to stop, because the last fix is often where the next bug comes from. Doing it anyway would stretch his approval past what he actually said. He's at his desk, so asking him costs one message.
+
+Send him one short message:
+
+- **Clean:** fixes 1 and 2.
+- **Not clean:** fix 3, the warning change, with two medium findings:
+  - Services that discard stderr no longer get any warning.
+  - A logging handler that raises can still replace the refusal message.
+- **Fix shape:** known, a few lines, and the owning agent still has the context loaded.
+- **Choice:**
+  - **(a) Delete:** revert fix 3 and keep the original logger warning. The branch then carries only the corruption fix, which is the real bug. It still needs one quick check that the combined branch is clean.
+  - **(b) Bound:** allow one more round, limited to those two findings only.
+
+**I'd pick (a)**, as long as fix 3 isn't needed for the corruption fix. It gets the reproduced bug fixed without opening a new review cycle, and the warning change can go on its own branch later.
+
+Nothing merges until he decides.

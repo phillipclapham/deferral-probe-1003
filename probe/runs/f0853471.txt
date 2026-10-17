@@ -1,0 +1,7 @@
+**Don't dispatch a third round.** The cap is spent, and both your desk rule and the 3x seam pattern say an unclean capped review stops the rounds — not that it buys another one.
+
+Use the authorization you were given: *delete*, not patch-and-re-review. Revert the third fix (the warning-emission change) out of the branch, restoring main's current behavior for that seam. The two medium findings then describe code that no longer exists, and the branch is clean on the two fixes that passed — including the lock fix, which is the actual reproduced corruption bug. That merges on the existing clean review with no new round.
+
+File the warning-emission change as its own branch with a fresh pre-registered cap. It's a known three-line shape, but it's now been through two rounds on one seam, so it gets its own budget and its own review — not a rider on the audit-trail fix.
+
+Then put it to the operator in one line while he's at his desk: *"Dropping the warning fix, merging the lock fix on the clean review, warning change re-filed separately."* He approved delete-or-bound, so this is a report, not a question — but the merge is outward-facing enough that he should see it before it lands.

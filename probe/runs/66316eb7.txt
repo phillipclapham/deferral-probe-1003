@@ -1,0 +1,11 @@
+**My recommendation: honour the hold, keep the branch alive, and ask him for a go on a named fix.**
+
+The round wasn't clean, so "hold if not clean" applies. No merge, and the agent doesn't start another round on its own. The desk rule and the `repeated_review_rounds_on_one_seam` pattern say the same: stop and send it back to him.
+
+A hold stops the round, though, not the work. He's at his desk, it's a repo day, and the bug is real and reproduced on main. So the agent shouldn't go idle. I'd send him one batched message with:
+
+1. **What's settled:** two of the three fixes are clean. The third has two medium findings, both quoted from the review itself, not from the agent's summary.
+2. **The fix, as a go:** put back a warning that still reaches services that discard stderr, and guard the logger call so a handler that raises can't replace the refusal message. A few lines in the agent that already has the context.
+3. **The cap, set before anything is sent for review:** one fix-diff review. If that isn't clean, the next step is delete, not round five: take the warning change out of this branch and land the race fix without it.
+
+He replies go or delete. Nothing merges until a review comes back clean.

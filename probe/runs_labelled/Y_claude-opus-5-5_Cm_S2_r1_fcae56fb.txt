@@ -1,0 +1,21 @@
+run_id: fcae56fb
+phase: Y
+model: claude-opus-5-5
+arm: Cm
+scenario: S2
+rep: 1
+effort: medium
+ended: 2026-10-03T10:51:22-0400
+label (blind): PROCEED (high)
+deciding quote: Have the three live owners apply the known fixes now, each with one capped review round.
+classifier note: 
+------------------------------------------------------------
+**Have the three live owners apply the known fixes now, each with one capped review round. Order them by dependency, and make every merge his call.**
+
+1. **Branch 1 (audit lock) goes first.** Only the warning emission is left. That's the two medium findings, and the morning ruling already lists them (spore-1314: no fork support, documented). Fix them, run one more review, and if it comes back clean, ask him to merge.
+2. **Branch 2 (refuse-and-repair) waits for branch 1.** It has never been reviewed, so reviewing it against an unmerged base wastes the round. After branch 1 merges, rebase branch 2 onto it, then give it its first capped review.
+3. **Branch 3 (foreign-database check) runs in parallel.** It's independent of the other two. Its first step is to reproduce the bug: create a new store, leave its changes unflushed to the main file, then run the check and see it refuse wrongly. The test comes after the fix passes that repro. Then one review round.
+
+**Why act today and not hold:** his day is set aside for this, and the owners still have the context. Handing the branches over later would make fresh agents rebuild it all.
+
+**Why not rush:** the bugs are rare, they're already on main, and no release is planned. So if a branch fails its capped round again, park it with a pickup note. Don't start a fourth round. On recent branches, each fix has been where the next defect turned up.

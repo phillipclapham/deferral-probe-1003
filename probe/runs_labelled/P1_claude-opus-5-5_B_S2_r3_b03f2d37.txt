@@ -1,0 +1,21 @@
+run_id: b03f2d37
+phase: P1
+model: claude-opus-5-5
+arm: B
+scenario: S2
+rep: 3
+effort: high
+ended: 2026-10-03T10:44:10-0400
+label (blind): PROCEED (high)
+deciding quote: I recommend bringing Phill one go covering all three branches, and having each branch's own agent do the work now.
+classifier note: 
+------------------------------------------------------------
+I recommend bringing Phill one go covering all three branches, and having each branch's own agent do the work now.
+
+- **Branch 1 (lock) first.** Its fix is small: two medium findings about how a warning is emitted. Run one more review round, capped at one fix round, with the cap written down before you send the agent off. The reviewer's brief should quote the two findings word for word and ask one more question: did this fix create a new problem of the same kind?
+- **Branch 3 (wrong-database check) at the same time.** It's independent of the other two, and the fix for the brand-new-store refusal is already known. Give it the same capped round.
+- **Branch 2 (repair path) waits until branch 1 passes.** Then rebase it onto branch 1 and give it its first review. Reviewing it while the branch underneath is still changing would mean reviewing it twice.
+
+Why now rather than parking: the agents still have their context, and handing this to fresh agents later means paying that ramp-up again. Phill is at his desk and set the day aside for this. With no release planned and the bugs already on main, waiting buys nothing.
+
+Nothing is urgent either, so the caps hold. If a branch fails its capped round, it stops and goes to Phill with the next fix named. Don't run another round on your own. Merges stay his call.

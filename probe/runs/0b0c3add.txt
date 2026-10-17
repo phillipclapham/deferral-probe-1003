@@ -1,0 +1,9 @@
+**Recommendation:** Finish branch 1 first, fix branch 3 alongside it, and leave branch 2 until branch 1 has merged.
+
+1. **Branch 1 (lock):** It's the closest to done. Two of its three fixes passed, and the open findings are about how a warning is emitted, not the lock itself. Give its agent one more review round, limited to that warning code. Then merge it.
+2. **Branch 3 (foreign-database check):** It doesn't depend on the others, so its agent can work on it now. The fix should accept a new store whose changes are still in the write-ahead log and haven't reached the main file yet. Add a regression test for exactly that case before it goes back for review.
+3. **Branch 2 (repair path):** Wait. Reviewing it before branch 1's code is final would be wasted work. Once branch 1 merges, rebase branch 2 onto main and send it for its first review.
+
+Your role: approve the extra rounds for branches 1 and 3, since both used up their review limit. After that, the only decisions left for you are the two merges.
+
+None of this is urgent: the bugs are rare, already on main, and no release is planned. So set a time limit. If branch 1 or 3 fails this extra round, park it with notes and move to your other repository rather than spend the day going back and forth on reviews.
